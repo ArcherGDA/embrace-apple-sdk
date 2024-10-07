@@ -5,7 +5,6 @@ import Foundation
 import PackageDescription
 
 var targetPlugins: [Target.PluginUsage] = [.plugin(name: "SwiftLintPlugin", package: "SwiftLint")]
-
 // Work around for plugin dependency being included in iOS target when using `xcodebuild test`
 // (See bin/xctest)
 // https://forums.swift.org/t/xcode-attempts-to-build-plugins-for-ios-is-there-a-workaround/57029
