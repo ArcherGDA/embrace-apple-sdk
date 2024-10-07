@@ -8,10 +8,16 @@ var targetPlugins: [Target.PluginUsage] = [.plugin(name: "SwiftLintPlugin", pack
 // Work around for plugin dependency being included in iOS target when using `xcodebuild test`
 // (See bin/xctest)
 // https://forums.swift.org/t/xcode-attempts-to-build-plugins-for-ios-is-there-a-workaround/57029
-if ProcessInfo.processInfo.environment["IS_XCTEST"] != nil ||
-    ProcessInfo.processInfo.environment["IS_ARCHIVE"] != nil {
-    targetPlugins.removeAll()
-}
+// if ProcessInfo.processInfo.environment["IS_XCTEST"] != nil ||
+//     ProcessInfo.processInfo.environment["IS_ARCHIVE"] != nil {
+//     targetPlugins.removeAll()
+// }
+
+// ARCHER work around
+//
+// Removes SwiftLintPlugin when resolving package dependencies to
+// bypass Xcode GUI prompt to enable or disable plugin
+targetPlugins.removeAll()
 
 let package = Package(
     name: "EmbraceIO",
